@@ -1,0 +1,35 @@
+<!-- app.component.html -->
+<div class="p-4">
+    <label for="courtSelect" class="block text-lg font-medium text-gray-700 mb-2">Select Court:</label>
+    <select id="courtSelect" [(ngModel)]="selectedCourt" (change)="onCourtChange($event)"
+            class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <option value="all">All</option>
+      <option value="Court 1">Court 1</option>
+      <option value="Court 2">Court 2</option>
+      <option value="Court 3">Court 3</option>
+    </select>
+</div>
+
+<div class="flex flex-wrap justify-center p-6 bg-gray-100">
+    <div *ngFor="let match of filteredMatches"
+         [ngClass]="{'bg-green-100 border-green-500': match.Winner, 'bg-white border-gray-300': !match.Winner}"
+         class="shadow-lg rounded-lg m-4 p-6 max-w-sm w-full border transition-transform transform hover:scale-105">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ match.Court }}</h2>
+        <p class="text-gray-700 mb-1 text-lg"><strong>MATCH:</strong> {{ match.MATCH }}</p>
+        <div class="flex justify-between items-center my-4">
+            <div class="bg-blue-200 text-blue-800 rounded p-2 text-center">
+                <p class="font-semibold text-xl">{{ match.team_1 }}</p>
+            </div>
+            <span class="bg-red-200 text-red-800 rounded p-2 font-bold text-lg">VS</span>
+            <div class="bg-blue-200 text-blue-800 rounded p-2 text-center">
+                <p class="font-semibold text-xl">{{ match.team_2 }}</p>
+            </div>
+        </div>
+        <p class="text-gray-700 mb-1 text-lg"><strong>Time:</strong> {{ match.Time }}</p>
+        <p class="font-semibold text-lg"
+           [ngClass]="{'text-green-600': match.Winner, 'text-blue-600': !match.Winner}">
+            <strong>Winner:</strong> {{ team[match.Winner] || 'N/A' }}
+        </p>
+        <button *ngIf="!match.Winner && haskey" (click)="addWinner(match.team_1,match.team_2,match.index)">Add winner</button>
+    </div>
+</div>

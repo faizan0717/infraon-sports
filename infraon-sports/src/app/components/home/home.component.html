@@ -1,0 +1,136 @@
+<div class="flex items-center justify-center">
+  <img src="https://media3.giphy.com/media/RimTYp7pim1H2/giphy.gif?cid=6c09b952r0dpwk8zuvt0jcturdagc1qntwncl3grq9pmtl1b&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="" >
+</div>
+
+<div class="flex items-center justify-center">
+  <img src="../../../assets/chamlp.png" alt="" >
+</div>
+
+<div class="flex items-center justify-center">
+  <img src="../../../assets/test111.png" alt="" >
+</div>
+
+<div class="container mx-auto px-4 mt-2">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Q1 -->
+    <div class="bg-green-500 shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-2">Final 1</h2>
+      <p class="mb-4">Hemanathan, Shikar Sourav  vs Nusaif & Lalith Siva Sai</p>
+      <p class="font-semibold">Winner: Nusaif & Lalith Siva Sai </p>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- s1 -->
+    <div class="bg-green-100 shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-2">Semi-final 1</h2>
+      <p class="mb-4">Hemanathan, Shikar Sourav  vs Kishore & Preeti</p>
+      <p class="font-semibold">Winner: Hemanathan, Shikar Sourav  </p>
+    </div>
+    <!-- s2 -->
+    <div class="bg-green-100 shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-2">Semi-final 2</h2>
+      <p class="mb-4">Nusaif & Lalith Siva Sai vs Bharath & Prajwal B</p>
+      <p class="font-semibold">Winner: Nusaif & Lalith Siva Sai</p>
+    </div>
+  </div>
+</div>
+
+<div class="container mx-auto px-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Q1 -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-2">Q1</h2>
+      <p class="mb-4">Hemanathan, Shikar Sourav vs Prajwal K S & Samyak</p>
+      <p class="font-semibold">Winner: Hemanathan, Shikar Sourav</p>
+    </div>
+    <!-- Q2 -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-2">Q2</h2>
+      <p class="mb-4">Nusaif & Lalith Siva Sai vs Shikhar Srivastav & Vignesh N</p>
+      <p class="font-semibold">Winner: Nusaif & Lalith Siva Sai </p>
+    </div>
+    <!-- Q3 -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-2">Q3</h2>
+      <p class="mb-4">Kishore & Preeti vs Krishna & Chidambar</p>
+      <p class="font-semibold">Winner: Kishore & Preeti </p>
+    </div>
+    <!-- Q4 -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <h2 class="text-xl font-semibold mb-2">Q4</h2>
+      <p class="mb-4">Bharath & Prajwal B vs Gayathri & Saikumar</p>
+      <p class="font-semibold">Winner: Bharath & Prajwal B </p>
+    </div>
+  </div>
+</div>
+<div
+  class="m-4 relative flex flex-col w-full h-full overflow-scroll text-gray-700 bg-white shadow-md bg-clip-border rounded-xl"
+  *ngFor="let groupName of getGroupNames()">
+  <div>
+    <h2 class="text-xl font-semibold">{{ groupName }}</h2>
+    <table class="w-full text-left table-auto min-w-max">
+      <thead>
+        <tr>
+          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+              Team
+            </p>
+          </th>
+          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+              Matches Played
+            </p>
+          </th>
+          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+              Won
+            </p>
+          </th>
+          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+              Lost
+            </p>
+          </th>
+          <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+            <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+              Points
+            </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let team of getTeams(groupName); let i = index" [ngClass]="{'bg-green-100': i < 2, 'even:bg-blue-gray-50/50': i >= 2}">
+          <td class="p-4">
+            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+              {{ team.name }}
+            </p>
+          </td>
+          <td class="p-4">
+            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+              {{ team.stats.wins +  team.stats.lost }}
+            </p>
+          </td>
+          <td class="p-4">
+            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+              {{ team.stats.wins }}
+            </p>
+          </td>
+          <td class="p-4">
+            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+              {{ team.stats.lost }}
+            </p>
+          </td>
+          <td class="p-4">
+            <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+              {{ team.stats.score }}
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
